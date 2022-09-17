@@ -1,0 +1,64 @@
+<html>
+  <script>
+    function fromnuToName(n) {
+      switch (n) {
+        case 0:
+          return "rock";
+        case 1:
+          return "Spock";
+        case 2:
+          return "paper";
+        case 3:
+          return "lizard";
+        case 4:
+          return "sccissors";
+      }
+    }
+    function winner(result) {
+      if (result == 1 || result == 2) {
+        return "Computer wins";
+      } else {
+        if (result == 4 || result == 3) {
+          return "Player wins!";
+        } else {
+          return "Player and computer tie!";
+        }
+      }
+    }
+    function getUserChoice(e) {
+      const compChoice = Math.floor(Math.random() * 5);
+      document.getElementById("compCh").innerHTML = fromnuToName(compChoice);
+      const result = Math.abs((compChoice - e) % 5);
+
+      document.getElementById("result").innerHTML = winner(result);
+    }
+  </script>
+  <style>
+    #result {
+      margin-bottom: 100px;
+      color: red;
+    }
+    .container {
+      display: flex;
+      gap: 200px;
+    }
+  </style>
+  <body>
+    <h1>Result:</h1>
+    <h1 id="result"></h1>
+    <div class="container">
+      <div>
+        <h1>Player Choice</h1>
+        <button id="0" onclick="getUserChoice(0)">rock</button>
+        <button id="1" onclick="getUserChoice(1)">Spock</button>
+        <button id="2" onclick="getUserChoice(2)">paper</button>
+        <button id="3" onclick="getUserChoice(3)">lizard</button>
+        <button id="4" onclick="getUserChoice(4)">sccissors</button>
+      </div>
+      <div>
+        <h1>Computer Choice</h1>
+        <h1 id="compCh"></h1>
+      </div>
+    </div>
+  </body>
+</html>
